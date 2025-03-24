@@ -1,0 +1,78 @@
+body{
+    margin-top: 40px;
+}
+
+body::before{
+    content:"XS";
+    color: red;
+    font-size: 2rem;
+    font-weight: bold;
+    position: fixed;
+    top: 0;
+    right: 0;
+}
+
+.box {
+    border: 2px;
+}
+
+@media (min-width: 576px){
+    body::before{
+        content: "SM";
+    }
+}
+
+
+@media (min-width: 768px){
+    body::before{
+        content: "MD";
+    }
+}
+
+
+@media (min-width: 992px){
+    body::before{
+        content: "LG";
+    }
+}
+
+
+@media (min-width: 1200px){
+    body::before{
+        content: "XL";
+    }
+}
+
+
+@media (min-width: 1400px){
+    body::before{
+        content: "XXL";
+    }
+}
+
+.col-3{
+    background-color: rgb(18, 130, 204);
+    padding: 0;
+}
+
+.col-4{
+    background-color: rgb(156, 61, 211);
+    padding: 0;
+}
+.col-6{
+    background-color: rgb(204, 187, 32);
+    padding: 0;
+}
+.col-2{
+    background-color: rgb(131, 243, 146);
+    padding: 0;
+}
+.col-1{
+    background-color: rgb(64, 207, 88);
+    padding: 0;
+}
+
+
+
+
+
