@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Pagination</title>
+</head>
+
+<body>
+    <div class="container">
+        <button id="test" class="btn btn-primary">Load</button>
+        <button id="load5">Next 5</button>
+        <button id="prev5">Previous 5</button>
+        <div id="output" class="border p-3 rounded bg-light"></div>
+    </div>
+
+</body>
+
+</html>
+
+<script>
+    let idnum = 0;
+    const outputDiv = document.getElementById("output");
+
+    document.getElementById("test").addEventListener("click", loadAPI);
+    document.getElementById("load5").addEventListener("click", loadAPI);
+    document.getElementById("prev5").addEventListener("click", prevAPI);
+
+    function loadAPI() {
+        outputDiv.innerHTML = ""; 
+        for (let i = 1; i <= 5; i++) {
+            fetch(`https://jsonplaceholder.typicode.com/posts/${idnum + i}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.id) {
+                        outputDiv.innerHTML += `
+                        <table border="1" width="100%">
+                            <tr>
+                                <td>${data.id}</td>
+                                <td>${data.title}</td>
+                                <td>${data.body}</td>
+                            </tr>
+                        </table>
+                    `;
+                    }
+                });
+        }
+        idnum += 5;
+    }
+
+    function prevAPI() {
+        if (idnum <= 5) return;
+        idnum -= 10;
+        if (idnum < 0) idnum = 0;
+        loadAPI();
+    }
+</script>
